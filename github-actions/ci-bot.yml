@@ -1,0 +1,12 @@
+name: CI Bot Trigger
+on: [push]
+
+jobs:
+  notify-control-plane:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send webhook to Repo Autopilot Enterprise
+        run: |
+          curl -X POST https://api.autopilot.company.com/webhooks/github \
+          -H "Content-Type: application/json" \
+          -d '{"event_type": "push", "repository": {"name": "${{ github.event.repository.name }}"}, "ref": "${{ github.ref }}"}'

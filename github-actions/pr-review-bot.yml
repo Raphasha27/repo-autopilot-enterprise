@@ -1,0 +1,14 @@
+name: AI PR Review Bot
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  request-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger AI Review
+        run: |
+          curl -X POST https://api.autopilot.company.com/webhooks/github \
+          -H "Content-Type: application/json" \
+          -d '{"event_type": "pull_request", "repository": {"name": "${{ github.event.repository.name }}"}, "pr_details": {"number": ${{ github.event.pull_request.number }} }}'

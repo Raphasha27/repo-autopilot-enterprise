@@ -1,0 +1,19 @@
+{
+  "title": "Repo Autopilot Enterprise Dashboard",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Active Repositories",
+      "targets": [
+        { "expr": "sum(autopilot_active_repos)" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Job Queue Latency",
+      "targets": [
+        { "expr": "rate(autopilot_queue_latency_seconds_sum[5m]) / rate(autopilot_queue_latency_seconds_count[5m])" }
+      ]
+    }
+  ]
+}

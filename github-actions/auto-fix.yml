@@ -1,0 +1,17 @@
+name: Auto-Fix Pipeline
+on:
+  workflow_run:
+    workflows: ["CI Build"]
+    types:
+      - completed
+
+jobs:
+  trigger-auto-fix:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request CI Fix
+        run: |
+          curl -X POST https://api.autopilot.company.com/webhooks/github \
+          -H "Content-Type: application/json" \
+          -d '{"event_type": "workflow_run", "ci_status": "failure", "repository": {"name": "${{ github.event.repository.name }}"}}'

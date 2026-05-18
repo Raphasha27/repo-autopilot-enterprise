@@ -1,0 +1,30 @@
+replicaCount: 2
+
+image:
+  repository: repo-autopilot/control-plane
+  pullPolicy: IfNotPresent
+  tag: "v1.0.0"
+
+service:
+  type: ClusterIP
+  port: 8000
+
+postgres:
+  enabled: true
+  auth:
+    username: autopilot
+    password: secretpass
+    database: autopilot_db
+
+redis:
+  enabled: true
+
+workers:
+  analyzer:
+    replicaCount: 3
+  prGenerator:
+    replicaCount: 2
+  ciFixer:
+    replicaCount: 2
+  gitExecutor:
+    replicaCount: 1
