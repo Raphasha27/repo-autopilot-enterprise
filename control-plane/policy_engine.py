@@ -60,7 +60,7 @@ class PolicyEngine:
             
             # Require human approval for production branch merges
             target_branch = payload.get("target_branch", "main")
-            if target_branch in ["main", "master", "production", "prod"] and not payload.get("human_approved", False):
+            if target_branch in ["main", "production", "prod"] and not payload.get("human_approved", False):
                 return GovernanceRuleResult(
                     passed=False,
                     rule_name="HUMAN_APPROVAL_REQUIRED_FOR_PROD_MERGE",

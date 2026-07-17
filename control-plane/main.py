@@ -50,7 +50,7 @@ def populate_repositories():
     ]
     
     owners = ["devops-team", "core-platform", "supplywave-corp", "product-logistics", "security-group"]
-    branches = ["main", "master", "develop", "prod"]
+    branches = ["main", "develop", "prod"]
     
     for i, name in enumerate(services):
         # Stagger health scores
