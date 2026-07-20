@@ -1,35 +1,19 @@
-# 🚀 Repo Autopilot Enterprise
+# Repo Autopilot
 
-An Enterprise AI DevOps & GitOps Orchestration Platform designed to manage, analyze, and autonomously heal multiple Git repositories.
+Repository automation tools and workflows for CI/CD, dependency management, and self-healing infrastructure.
 
-## 🏗️ Architecture
+## Stack
 
-This repository contains the full production-ready system blueprint:
-- **Control Plane (`/control-plane`)**: FastAPI backend orchestrating GitHub webhooks, AI decisions, and Redis queues.
-- **Workers (`/workers`)**: Kubernetes-ready Python workers for static analysis, automated CI fixes, PR generation, and safe Git execution.
-- **Data & Policy Layer**: Database schemas (`/db/schema.sql`) for strict audit logging, and a Policy Engine for blocking risky AI operations.
-- **Frontend Dashboard (`/frontend/dashboard`)**: A gorgeous, high-fidelity React + Vite frontend featuring real-time interactive telemetry charts, glassmorphism design, and AI audit logs.
-- **Infrastructure (`/k8s`, `/infra`, `/github-actions`)**: Complete setup including Prometheus monitoring, Grafana dashboards, Helm values, and K8s deployments.
+- **Language:** Python\n- **Focus:** DevOps automation, CI/CD, self-healing
 
-## 🛡️ Security & Governance
-This platform enforces strict governance rules:
-- No automatic merges without CI success.
-- Direct blocking of destructive Git commands (e.g., branch deletions).
-- No pushing to production infrastructure without manual operator approval.
+## Quick Start
 
-## 🚀 Running Locally
+ `bash
+git clone https://github.com/Raphasha27/repo-autopilot-enterprise.git\ncd repo-autopilot-enterprise\npip install -r requirements.txt\npython main.py
+ ` 
 
-### 1. Start the React UI Dashboard
-```bash
-cd frontend/dashboard
-npm install
-npm run dev
-```
-Navigate to `http://localhost:5173/` to view the local simulation.
+## Features\n\n- Automated dependency updates\n- Self-healing workflow scripts\n- CI/CD pipeline templates
 
-### 2. (Optional) Run the Control Plane API
-```bash
-cd control-plane
-pip install fastapi uvicorn pydantic requests
-uvicorn main:app --reload --port 8000
-```
+## License
+
+MIT
